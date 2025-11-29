@@ -5,3 +5,4 @@
 <p>Estaré haciendo la página en mis tiempos libres y poco a poco intentaré mejorar mi página con más avances como Javascript, un formulario y más...</p>
 <br>
 <p><b>24/09/2025</b>: <i>Creación del repositorio y primera actualización del README</i>.</p>
+<p><b>29/11/2025</b>: <i>Primeros pasos de la página web</i>.</p>
