@@ -9,8 +9,25 @@
     list-style: none;
 }
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-bg: #ffffffa5;
+    --border-color: #000000;
+    --hover-shadow: rgba(0, 0, 0, 0.4);
+    --transition: 0.3s ease-in-out;
+}
+
+.darkmode {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --header-bg: #000000a5;
+    --border-color: #ffffff;
+    --hover-shadow: rgba(255, 255, 255, 0.6);
+}
+
 body {
-    background: #000000;
+    background: var(--bg-color);
 }
 
 .header {
@@ -18,39 +35,50 @@ body {
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    gap: 3rem;
-    background: #000000cc;
-    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
-    padding: 0.75rem 1.75rem;
+    gap: 1.5rem;
+    display: flex;
     border-radius: 3rem;
     z-index: 1000;
-    border: 2px solid #ffffff;
+}
+
+.nav-container, .theme-container {
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-color);
+    border-radius: 3rem;
+    padding: 0.75rem 1.75rem;
+	display: flex;
+	align-items: center;
+}
+
+.nav-container {
+    gap: 3rem;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #ffffff;
-    transition: 0.3s;
+    color: var(--text-color);
+    transition: var(--transition);
 }
 
 .logo:hover {
-    text-shadow: 0 0 5px #ffffff,
-        0 0 10px #ffffff,
-        0 0 20px #ffffff;
+    text-shadow: 0 0 5px var(--text-color),
+        0 0 10px var(--text-color),
+        0 0 20px var(--text-color);
     transform: scale(1.1);
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 1.3rem;
 }
 
 .nav-menu a {
-    color: #ffffff;
-    font-size: 1.125rem;
+    color: var(--text-color);
+    font-size: 1.15rem;
     position: relative;
 }
 
@@ -59,11 +87,11 @@ body {
     position: absolute;
     width: 0;
     height: 1.35px;
-    background: #ffffff;
+    background: var(--text-color);
     bottom: -2.5px;
     left: 50%;
     transform: translateX(-50%);
-    transition: 0.3s;
+    transition: var(--transition);
     border-radius: 3rem;
 }
 
@@ -75,7 +103,39 @@ body {
     font-size: 1.65rem;
     display: none;
     cursor: pointer;
-    color: #ffffff;
+    color: var(--text-color);
+}
+
+.theme-container {
+	padding: 0.75rem;
+}
+
+#theme-switch {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    color: var(--text-color);
+}
+
+#theme-switch:active {
+    transform: scale(0.9);
+}
+
+#theme-switch svg {
+    fill: var(--text-color);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+    display: block;
 }
 
 section {
@@ -86,13 +146,15 @@ section {
 
 .footer {
     display: flex;
+    width: 100%;
     padding: 3rem;
     align-items: center;
     justify-content: space-around;
+    border-top: 2px solid var(--border-color);
 }
 
 .footer p {
-    color: #ffffff;
+    color: var(--text-color);
     font-size: 1.25rem;
     text-transform: lowercase;
 }
@@ -103,31 +165,40 @@ section {
 }
 
 .social-icons a {
-    color: #ffffff;
+    color: var(--text-color);
     align-items: center;
     justify-content: center;
     font-size: 1.35rem;
     padding: 0.65rem;
     background: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--border-color);
     border-radius: 50%;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
 .social-icons a:hover{
-    background: #ffffff;
-    color: #000000;
+    background: var(--text-color);
+    color: var(--bg-color);
     transform: scale(1.1)translateY(-5px);
-    box-shadow: 0 0 25px #ffffff;
+    box-shadow: 0 0 25px var(--hover-shadow);
 }
 
 @media(max-width: 768px) {
     .header {
-        gap: 3rem;
+        width: 95%;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .nav-container {
+        flex: 1;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
     }
 
     #menu-icon {
         display: block;
+        color: var(--text-color);
     }
 
     .nav-menu {
@@ -136,9 +207,9 @@ section {
         margin-top: 1rem;
         left: 0;
         width: 100%;
-        background: #000000aa;
+        background: var(--header-bg);
         backdrop-filter: blur(14px);
-        border: 2px solid #ffffff;
+        border: 2px solid var(--border-color);
         border-radius: 2rem;
         flex-direction: column;
         padding: 2rem;
@@ -149,5 +220,13 @@ section {
     .nav-menu.active {
         display: flex;
     }
-}
 
+    .footer {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .footer p {
+        font-size: 1.15rem;
+    }
+}
